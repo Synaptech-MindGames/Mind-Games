@@ -62,4 +62,4 @@ Commit and push your branch, then open a pull request to `main` for review. Do n
 
 ## License
 
-[MIT](LICENSE)
+[MIT License with attribution requirement](LICENSE)
