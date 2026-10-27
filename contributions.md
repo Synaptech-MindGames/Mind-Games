@@ -14,7 +14,7 @@ Coordinate with your subgroup before taking on a task. The current setup and pro
 Install:
 
 - [Git](https://git-scm.com/downloads)
-- [Python 3.13.15](https://www.python.org/downloads/release/python-31315/)
+- [Python 3.13.18](https://www.python.org/downloads/release/python-31318/)
 - [Visual Studio Code](https://code.visualstudio.com/download)
 
 This repository is currently a scaffold: it has no dependency list or runnable game entry point yet. Check the README and existing files before assuming setup or run commands.
