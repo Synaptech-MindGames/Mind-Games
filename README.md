@@ -46,19 +46,26 @@ python3.13 -m venv .venv
 source .venv/bin/activate
 ```
 
-The `.venv/` folder is ignored by Git. This repository does not yet include a dependency list or runnable entry point, so there is no program to launch yet. Code will go in `source/`; project notes will go in `documentation/`.
-
 ## Contribute
 
-Before starting work, update `main` and create a branch for your task:
+Before starting implementation, update `main`, create or switch to a task branch, merge the latest `origin/main` into it, resolve any conflicts, and push the prepared branch:
 
 ```sh
+git fetch origin
 git switch main
-git pull --ff-only
+git pull --ff-only origin main
 git switch -c group/short-task-name
+git pull --no-rebase origin main
+git push --set-upstream origin group/short-task-name
 ```
 
-Commit and push your branch, then open a pull request to `main` for review. Do not push task changes directly to `main`.
+For an existing task branch, switch to it instead of creating it, then pull `origin/main` into it and push before editing. If the pull reports conflicts, resolve them one file or hunk at a time, inspect both sides, and continue until none remain; never choose `ours` or `theirs` blindly. Run relevant checks and push the synchronized branch before beginning implementation.
+
+If a push is rejected because the remote branch advanced, do not force-push. Pull the advanced task branch (`git pull --no-rebase origin group/short-task-name`) or `origin/main` if `main` advanced, resolve conflicts individually, rerun relevant checks, and retry the push. Repeat if the remote changes again.
+
+Search for a matching GitHub issue before starting work. Reuse it, or create and assign one to `MarsLuay` before linking any commit or pull request. Split large or multi-scope work into multiple focused issues and small commits, one issue per independent work item. Reference the relevant issue in each commit and pull request; use `Closes #<number>` only when the PR fully resolves it. Close issues only after the work is pushed, verified, and merged when applicable.
+
+A task-branch push does not require a PR. When changes are ready to be merged into `main`, open a PR with `main` as the base; do not push task changes directly to `main`.
 
 ## License
 
