@@ -20,7 +20,7 @@ Teams can work on EEG hardware and data, signal processing, artifact detection, 
 Install:
 
 - [Git](https://git-scm.com/downloads)
-- [Python 3.12](https://www.python.org/downloads/) — choose the latest 3.12.x release.
+- [Python 3.13](https://www.python.org/downloads/) — choose the latest 3.13.x release.
 - [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ### Get the project
@@ -35,14 +35,14 @@ cd Mind-Games
 **Windows PowerShell:**
 
 ```powershell
-py -3.12 -m venv .venv
+py -3.13 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
 **macOS or Linux:**
 
 ```sh
-python3.12 -m venv .venv
+python3.13 -m venv .venv
 source .venv/bin/activate
 ```
 
