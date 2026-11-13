@@ -12,7 +12,7 @@ We 100% encourage you to use agentic AI's (just keep it simple when making chang
 
 ### 1. Codex $100 credits
 
-I would recommend Luna, it['s not going to demolish your credits in one prompt.
+I would recommend Luna, it's not going to demolish your credits in one prompt. Trust me on this, Sol and Terra will quite literally run out in a day, use Luna in order to actually actively work on your project.
 
 Link: https://chatgpt.com/codex/students/
 
