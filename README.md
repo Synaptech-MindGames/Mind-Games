@@ -14,13 +14,13 @@ We 100% encourage you to use agentic AI's (just keep it simple when making chang
 
 I would recommend Luna, it['s not going to demolish your credits in one prompt.
 
-Link:
+Link: https://chatgpt.com/codex/students/
 
 ### 2. Anti-gravity AI
 
 This is Google's AI (Weird off-shoot that allows you to use Gemini). They're currently offering a year for free at the moment. Sign up!
 
-Link: 
+Link: https://one.google.com/ai-student
 
 ## Project plan
 
