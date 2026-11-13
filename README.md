@@ -6,6 +6,22 @@ A team project to recreate Mindball, then build Mario Party–style brain-contro
 
 Two players wear EEG headsets. The game turns their brain activity into a score. In Mindball, the ball moves toward the less-relaxed player, so the calmer player wins. A key project challenge is testing whether the EEG score reliably measures relaxation.
 
+## AI Resources
+
+We 100% encourage you to use agentic AI's (just keep it simple when making changes to the repo..). We have guidelines for them in AGENTS.md to prevent screw-ups and human failure.
+
+### 1. Codex $100 credits
+
+I would recommend Luna, it['s not going to demolish your credits in one prompt.
+
+Link:
+
+### 2. Anti-gravity AI
+
+This is Google's AI (Weird off-shoot that allows you to use Gemini). They're currently offering a year for free at the moment. Sign up!
+
+Link: 
+
 ## Project plan
 
 1. **Phase 1 — Mindball:** Build the EEG-to-game pipeline and a working Mindball prototype. The first milestone is a Python tool that streams or replays EEG data and saves recordings.
