@@ -4,7 +4,13 @@ from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds
 from brainflow.data_filter import (DataFilter, WindowOperations,
                                    DetrendOperations, FilterTypes)
 
-SMOOTHING_ALPHA = 0.3     # 0 to 1: higher = faster, less smooth
+# ---------- Settings ----------
+SMOOTHING_ALPHA = 0.3      # 0 to 1: higher = faster, less smooth
+BASELINE_SECONDS = 15      # use 45-60 for real players
+PTP_THRESHOLD = 200        # microvolts; raise to 2000 if the fake board gets rejected
+CHANNEL = 0                # synthetic board: 0 is fine. Real headset: 6 or 7 (O1/O2)
+
+# ---------- Board setup ----------
 board_id = BoardIds.SYNTHETIC_BOARD
 board = BoardShim(board_id, BrainFlowInputParams())
 
@@ -12,10 +18,12 @@ fs = BoardShim.get_sampling_rate(board_id)
 eeg_channels = BoardShim.get_eeg_channels(board_id)
 nfft = DataFilter.get_nearest_power_of_two(fs)
 
-
 rejected = 0
+
+
 def get_score(channel_index):
-    """Score from the most recent 2 seconds of one channel, or None if bad."""
+    """Relaxation score from the most recent 2 seconds, or None if bad."""
+    global rejected
     data = board.get_current_board_data(fs * 2)
     if data.shape[1] < fs * 2:            # not enough data yet
         return None
@@ -23,10 +31,10 @@ def get_score(channel_index):
     DataFilter.detrend(signal, DetrendOperations.LINEAR.value)
     DataFilter.perform_bandpass(signal, fs, 1.0, 45.0, 4,
                                 FilterTypes.BUTTERWORTH.value, 0)
-    if np.ptp(signal) > 200 or np.std(signal) < 0.5:
-        global rejected
+    if np.ptp(signal) > PTP_THRESHOLD or np.std(signal) < 0.5:
         rejected += 1
-        return None    psd = DataFilter.get_psd_welch(signal, nfft, nfft // 2, fs,
+        return None
+    psd = DataFilter.get_psd_welch(signal, nfft, nfft // 2, fs,
                                    WindowOperations.HANNING.value)
     alpha = DataFilter.get_band_power(psd, 8.0, 12.0)
     theta = DataFilter.get_band_power(psd, 4.0, 8.0)
@@ -34,7 +42,7 @@ def get_score(channel_index):
     return np.log((alpha + theta) / beta)
 
 
-def record_baseline(channel_index, seconds=60):
+def record_baseline(channel_index, seconds=30):
     """Collect scores for `seconds`, return (mean, std)."""
     scores = []
     start = time.time()
@@ -50,31 +58,35 @@ def record_baseline(channel_index, seconds=60):
     return np.mean(scores), max(np.std(scores), 1e-6)
 
 
+# ---------- Run ----------
 board.prepare_session()
 board.start_stream()
-time.sleep(3)                            # let the buffer fill
-
-print("Baseline: sit still and relax for 60 seconds...")
-base_mean, base_std = record_baseline(channel_index=0, seconds=60)
-print("Baseline mean:", base_mean, "std:", base_std)
-
-print("Now playing. Press Ctrl+C to stop.")
-recent = []                              # for smoothing
-last_raw = base_mean                     # fallback if a window is rejected
 try:
+    time.sleep(3)                        # let the buffer fill
+
+    print(f"Baseline: sit still and relax for {BASELINE_SECONDS} seconds...")
+    base_mean, base_std = record_baseline(CHANNEL, BASELINE_SECONDS)
+    print("Baseline mean:", base_mean, "std:", base_std)
+
+    rejected = 0                         # don't count baseline rejections
+    print("Now playing. Press Ctrl+C to stop.")
+    smoothed = 0.0
+    last_raw = base_mean                 # fallback if a window is rejected
+    count = 0
     while True:
-        raw = get_score(0)
+        raw = get_score(CHANNEL)
+        count += 1
         if raw is None:
             raw = last_raw               # reuse the previous good score
         last_raw = raw
-        z = (raw - base_mean) / base_std           # z-score vs. own baseline
-        recent.append(z)
-        recent = recent[-6:]                       # keep last 6 values (~3 s)
-        smoothed = np.mean(recent)
-        print("relaxation (z-score):", round(smoothed, 2))
+        z = (raw - base_mean) / base_std            # z-score vs. own baseline
+        z = float(np.clip(z, -3, 3))                # limit extreme values
+        smoothed = SMOOTHING_ALPHA * z + (1 - SMOOTHING_ALPHA) * smoothed
+        print(f"relaxation (z-score): {smoothed:+.2f}   "
+              f"rejected: {100 * rejected / count:.0f}%")
         time.sleep(0.5)
 except KeyboardInterrupt:
     pass
-
-board.stop_stream()
-board.release_session()
+finally:
+    board.stop_stream()                  # always runs, even after an error
+    board.release_session()
