@@ -1,0 +1,80 @@
+import time
+import numpy as np
+from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds
+from brainflow.data_filter import (DataFilter, WindowOperations,
+                                   DetrendOperations, FilterTypes)
+
+SMOOTHING_ALPHA = 0.3     # 0 to 1: higher = faster, less smooth
+board_id = BoardIds.SYNTHETIC_BOARD
+board = BoardShim(board_id, BrainFlowInputParams())
+
+fs = BoardShim.get_sampling_rate(board_id)
+eeg_channels = BoardShim.get_eeg_channels(board_id)
+nfft = DataFilter.get_nearest_power_of_two(fs)
+
+
+rejected = 0
+def get_score(channel_index):
+    """Score from the most recent 2 seconds of one channel, or None if bad."""
+    data = board.get_current_board_data(fs * 2)
+    if data.shape[1] < fs * 2:            # not enough data yet
+        return None
+    signal = data[eeg_channels[channel_index]].copy()
+    DataFilter.detrend(signal, DetrendOperations.LINEAR.value)
+    DataFilter.perform_bandpass(signal, fs, 1.0, 45.0, 4,
+                                FilterTypes.BUTTERWORTH.value, 0)
+    if np.ptp(signal) > 200 or np.std(signal) < 0.5:
+        global rejected
+        rejected += 1
+        return None    psd = DataFilter.get_psd_welch(signal, nfft, nfft // 2, fs,
+                                   WindowOperations.HANNING.value)
+    alpha = DataFilter.get_band_power(psd, 8.0, 12.0)
+    theta = DataFilter.get_band_power(psd, 4.0, 8.0)
+    beta = DataFilter.get_band_power(psd, 13.0, 30.0)
+    return np.log((alpha + theta) / beta)
+
+
+def record_baseline(channel_index, seconds=60):
+    """Collect scores for `seconds`, return (mean, std)."""
+    scores = []
+    start = time.time()
+    while time.time() - start < seconds:
+        score = get_score(channel_index)
+        if score is not None:
+            scores.append(score)
+        time.sleep(0.5)                  # one score every half second
+    scores = scores[10:]                 # drop first ~5 s (settling in)
+    if len(scores) < 5:
+        raise RuntimeError("Not enough clean data for a baseline. "
+                           "Check electrodes or the rejection threshold.")
+    return np.mean(scores), max(np.std(scores), 1e-6)
+
+
+board.prepare_session()
+board.start_stream()
+time.sleep(3)                            # let the buffer fill
+
+print("Baseline: sit still and relax for 60 seconds...")
+base_mean, base_std = record_baseline(channel_index=0, seconds=60)
+print("Baseline mean:", base_mean, "std:", base_std)
+
+print("Now playing. Press Ctrl+C to stop.")
+recent = []                              # for smoothing
+last_raw = base_mean                     # fallback if a window is rejected
+try:
+    while True:
+        raw = get_score(0)
+        if raw is None:
+            raw = last_raw               # reuse the previous good score
+        last_raw = raw
+        z = (raw - base_mean) / base_std           # z-score vs. own baseline
+        recent.append(z)
+        recent = recent[-6:]                       # keep last 6 values (~3 s)
+        smoothed = np.mean(recent)
+        print("relaxation (z-score):", round(smoothed, 2))
+        time.sleep(0.5)
+except KeyboardInterrupt:
+    pass
+
+board.stop_stream()
+board.release_session()
