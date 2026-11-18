@@ -16,3 +16,19 @@ November 12 Meeting
 
     
 - Next meeting on Tuesday 4 - 5 PM
+
+
+What we discussed in 11.17 Meeting:
+Proposed Plan for EEG Signal Processing:
+
+1 Set up device (channels)
+
+2 Clean data
+
+3 Seperate waves 
+ --> maybe do something with range? encoding
+
+4 Create Movement Index
+ --> maybe agitated/relax waves correspond to certain ball movement
+
+- Next meeting on Tuesday 4-5 online
