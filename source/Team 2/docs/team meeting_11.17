@@ -1,0 +1,11 @@
+Proposed Plan for EEG Signal Processing:
+
+1 Set up device (channels)
+
+2 Clean data
+
+3 Seperate waves 
+ --> maybe do something with range? encoding
+
+4 Create Movement Index
+ --> maybe agitated/relax waves correspond to certain ball movement
