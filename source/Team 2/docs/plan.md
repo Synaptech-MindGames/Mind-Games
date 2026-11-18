@@ -10,6 +10,8 @@ November 12 Meeting
        calculation, and classification of EEG signal data, which we can draw inspiration from. Additionally, table 1 and 2
        show the average measurements of Alpha, Beta, Theta, Delta, Gamma waves of 20 students in a learning session. This can
        be an indicator of wave measurements when we design our focus index in MindGames.
+  - https://nhahealth.com/brainwaves-the-language/
+   --> useful website that summarizes each brain wave the EEG can capture, its frequencies, and affiliated physical states
        
 
     
