@@ -15,16 +15,25 @@
 
 1. Delta
     - 0.5–4 Hz
+    - Associated with ___
 2. Theta
     - 4–8 Hz
+    - Associated with ___
 3. Alpha
     - 8–13 Hz
+    - Associated with ___
 4. Mu (sensorimotor)
     - 8–13 Hz
+    - Associated with ___
 5. Beta
     - 13–30 Hz
+    - Associated with ___
 6. Low gamma
     - 30–45 Hz
+    - Associated with ___
+7. Higher gamma
+    - 45–62.5 Hz
+    - Associated with ___
 
 ## Objective 2: Figure out the motor movements and their impacts
 
