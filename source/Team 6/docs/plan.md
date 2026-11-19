@@ -12,14 +12,15 @@
 ### Sources
 
 - https://www.nemar.org/dataset/nm000328
-- use this one --> https://data.mendeley.com/datasets/x8psbz3f6x/2
+    - Upper/lower hand/foot movement affecting EEG data
+- https://data.mendeley.com/datasets/x8psbz3f6x/2
+    - Provides EEG data samples
 
 ### Motor Movements
 
-1.
+1. Hand closing/opening
     - Affects ___
-2.
+2. Foot moving left to right. (right AND left)
     - Affects ___
-
-3.
+3. 
     - Affects ___
