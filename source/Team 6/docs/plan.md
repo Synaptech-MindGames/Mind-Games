@@ -40,10 +40,11 @@
 
 #### Different types of established focus
 
-1.
-2.
-3.
-4.
+1. Focused (Selective) Attention
+2. Sustained Attention
+3. Alternating Attention
+4. Divided Attention
+5. Top-Down (Goal-directed) vs. Bottom-Up (Stimulus-driven) attention
 
 ### Objective 2: Figure out the motor movements and their impacts
 
@@ -58,7 +59,7 @@
 
 1. Hand closing/opening
     - Affects ___
-2. Foot moving left to right. (right AND left)
+2. Foot moving up and down. (right AND left)
     - Affects ___
 3. 
     - Affects ___
@@ -68,4 +69,5 @@
 ### Minigame brainstorming
 
 1. Hand magic stuff
-2. No clue from here, gl to us
+2. Analyze alternative focus and each person’s ability to maintain focus as compared to their counterparts
+3. No clue from here, gl to us
