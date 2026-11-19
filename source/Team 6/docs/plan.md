@@ -1,11 +1,30 @@
 # Plan
 
+## Download EEG Software
+
+- https://openbci.com/downloads
+
 ## Objective 1: Figure out exactly what research we can do while Team 4 is working their magic
 
 - The types of focus
 - What sort of waves/focus we focus on, or do a little bit of everything
 - Motor movements and how they affect these brain waves and different types of focus
+- Identify the frequencies openbci Ultracortex Mark IV with CytonDaisy Board (16 channels) identifies, and relate them to motor movement studies
 
+## Objective 2: Figure out the frequencies the openbci Ultracortex Mark IV with CytonDaisy Board (16 channels) can measure.
+
+1. Delta
+    - 0.5–4 Hz
+2. Theta
+    - 4–8 Hz
+3. Alpha
+    - 8–13 Hz
+4. Mu (sensorimotor)
+    - 8–13 Hz
+5. Beta
+    - 13–30 Hz
+6. Low gamma
+    - 30–45 Hz
 
 ## Objective 2: Figure out the motor movements and their impacts
 
@@ -24,3 +43,4 @@
     - Affects ___
 3. 
     - Affects ___
+
