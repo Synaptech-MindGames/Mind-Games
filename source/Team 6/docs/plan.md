@@ -1,6 +1,15 @@
 # Plan
 
 ## Phase 1
+
+### Current to do
+
+- There are two wireless modes, figure out which one we will use and focus on depending on accuracy and the frequenies it allows us
+- Brainstorm games with these frequencies afterwords
+- Figure out the different types of focus
+- Figure out how motor movement influences these frequencies
+
+
 ### Download EEG Software
 
 - https://openbci.com/downloads
