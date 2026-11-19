@@ -7,5 +7,18 @@
 - Motor movements and how they affect these brain waves and different types of focus
 
 
-## Objec
-https://www.nemar.org/dataset/nm000328 
+## Objective 2: Figure out the motor movements and their impacts
+
+### Sources
+
+- https://www.nemar.org/dataset/nm000328 
+
+### Motor Movements
+
+1.
+    - Affects ___
+2.
+    - Affects ___
+
+3.
+    - Affects ___
