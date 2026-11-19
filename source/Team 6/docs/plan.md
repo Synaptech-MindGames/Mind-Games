@@ -13,6 +13,8 @@
 
 ## Objective 2: Figure out the frequencies the openbci Ultracortex Mark IV with CytonDaisy Board (16 channels) can measure.
 
+### Frequencies the BCI picks up
+
 1. Delta
     - 0.5–4 Hz
     - Associated with ___
@@ -34,6 +36,13 @@
 7. Higher gamma
     - 45–62.5 Hz
     - Associated with ___
+
+### Different types of established focus
+
+1.
+2.
+3.
+4.
 
 ## Objective 2: Figure out the motor movements and their impacts
 
