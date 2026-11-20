@@ -93,3 +93,4 @@ This way we can actually test our program before we do live testing.
 1. Hand magic stuff
 2. Analyze alternative focus and each person’s ability to maintain focus as compared to their counterparts
 3. No clue from here, gl to us
+4. Pico park recreation! That would be fun as hell
