@@ -25,6 +25,7 @@ This way we can actually test our program before we do live testing.
 - https://openbci.com/downloads
     - Actually receives the data 
 - https://github.com/sccn/labstreaminglayer
+    - Takes a live 
 
 ### Objective 1: Figure out exactly what research we can do while Team 4 is working their magic
 
