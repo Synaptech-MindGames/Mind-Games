@@ -12,7 +12,19 @@
 
 ### Download EEG Software
 
+There are two programs
+OpenBCI GUI 
+    - Receives the data from the EEG and puts it into csv files but DOES NOT stream to programs
+LSL
+    - Adds an option to do direct data streaming from the GUi to your programs
+
+We are going to request a bunch of csv's and txt files for different situations to test with our version of mindball.
+
+This way we can actually test our program before we do live testing.
+
 - https://openbci.com/downloads
+    - Actually receives the data 
+- https://github.com/sccn/labstreaminglayer
 
 ### Objective 1: Figure out exactly what research we can do while Team 4 is working their magic
 
