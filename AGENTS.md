@@ -5,6 +5,8 @@ This is a team project split into 2 phases.
 ## Tool prerequisites
 Use Python 3.13.18 for project tooling. Before invoking a tool that requires Git or Python, check that Git and Python 3.13.18 are installed. Automatically install whichever is missing, then retry the tool.
 
+- All projects interface with Lab Streaming Layer (LSL) (https://github.com/sccn/labstreaminglayer); consult its documentation and source for exact APIs when creating programs.
+
 ## Change and verification rules
 - For code or documentation changes, make the smallest complete, working addition and avoid unrelated refactoring.
 - After every change, run relevant checks and live-test the changed behavior in its real environment. If hardware or another blocker prevents live testing, state that limitation and give instructions on what the user needs to do to have it pass.
