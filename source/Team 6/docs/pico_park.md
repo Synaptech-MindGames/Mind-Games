@@ -11,6 +11,22 @@ You will be able to connect up to 4 BCI's into one device in order to play the g
 
 So
 
+## Libraries
+
+Language - Rust
+Engine - Bevy 0.20.1
+2D physics - Avian2D 0.8	
+LAN multiplayer - Lightyear 0.31	
+Networked physics - lightyear_avian2d 0.31	
+Input management - Leafwing Input Manager 0.22	
+Launcher communication - TCP + rmp-serde	
+Serialization - Serde	
+Game UI - Bevy UI	
+Audio - Bevy Audio	
+Testing - cargo test + Proptest
+
+## Goals
+
 1. Investigate whether LSL or another project would be the best way to wirelessly stream from the BCI's
 
 2. Investigate open source recreations of Pico park, and if none exist, gotta get to creating one.
@@ -18,14 +34,11 @@ So
 
 3. Confirm it'll work on all OS's.
 
-4. Figure out game engine (Has to have good performance)
-
 5. Will connect through LAN hosting (Local Area Network hosting), specifically direct client-server networking over a private IPv4 network
 
-6. 2D game.
+6. 2D game. Use github.com/Vanndavid/picopark-online as a reference when recreating in rust + bevy
 
 7. Request data samples
     1. Clench left hand and hold. plus sporadic hand clenches
     2. Clench right hand and hold plus sporadic hand clenches
     3. Blink for jump
-    
