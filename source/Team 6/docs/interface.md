@@ -1,6 +1,6 @@
 # Game plan
 
-so obviously we are competing against the other teams and must therefore creat the best architecture and 'interface' to both play mindball, and other minigames we add later.
+so obviously we are competing against the other teams and must therefore create the best architecture and 'interface' to both play mindball, and other minigames we add later.
 
 We originally decided with Python as the language to use (it's extremely easy to use) and we are gonna stick with it. I am thinking using it as the language for the interface, with the games themselves being modular. That way we can have them be standalone if need be so AI can iteratively test them, and not just restart the interface everytime. (we can also include a CLI for the ai's to run the modular minigames, or add 'doctor' commands)
 
