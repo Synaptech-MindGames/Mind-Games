@@ -11,3 +11,10 @@ First things first, we need to investigate (with loving support from ai) and how
 
 3. Confirm it'll work on all OS's.
 
+4. Figure out game engine (Has to have good performance)
+
+4. Request data samples
+    1. Clench left hand and hold. plus sporadic hand clenches
+    2. Clench right hand and hold plus sporadic hand clenches
+    3. Blink for jump
+    
