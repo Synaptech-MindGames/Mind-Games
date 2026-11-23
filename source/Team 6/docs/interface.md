@@ -7,3 +7,5 @@ We originally decided with Python as the language to use (it's extremely easy to
 And the interface should be able to run minigames made in python and rust for now, with other adaptors potentially added later
 
 1. Do market research and see if there are existing open source interfaces that we can look at for the best architecture
+
+2. Find the best streaming thing (If there's a better alternative than LSL)

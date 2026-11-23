@@ -11,4 +11,3 @@ First things first, we need to investigate (with loving support from ai) and how
 
 3. Confirm it'll work on all OS's.
 
-## Objective 1: Finding the best streaming thing.
