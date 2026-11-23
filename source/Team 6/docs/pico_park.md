@@ -2,7 +2,14 @@
 
 Pico park!!
 
-First things first, we need to investigate (with loving support from ai) and how to connect our BCI's to the GUI. I heard from the other team that LSL could and should work! But there's much better open source repos they were ripping from. So
+First things first, we need to investigate (with loving support from ai) and how to connect our BCI's to the GUI. I heard from the other team that LSL could and should work! But there's much better open source repos they were ripping from. 
+
+Also we need to figure out the game engine
+There will be three modes, BCI mode, WASD/space mode, and hand tracking mode
+
+You will be able to connect up to 4 BCI's into one device in order to play the game. It'll also need to be able to be played over the same network?
+
+So
 
 1. Investigate whether LSL or another project would be the best way to wirelessly stream from the BCI's
 
@@ -13,7 +20,11 @@ First things first, we need to investigate (with loving support from ai) and how
 
 4. Figure out game engine (Has to have good performance)
 
-4. Request data samples
+5. Will connect through LAN hosting (Local Area Network hosting), specifically direct client-server networking over a private IPv4 network
+
+6. 2D game.
+
+7. Request data samples
     1. Clench left hand and hold. plus sporadic hand clenches
     2. Clench right hand and hold plus sporadic hand clenches
     3. Blink for jump
